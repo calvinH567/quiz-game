@@ -1,6 +1,6 @@
 class participant {
-        constructor(d){
-          this.d = 0;
+        constructor(answer){
+          this.answer = null;
           this.name = null
           this.index = null
       
@@ -24,13 +24,14 @@ class participant {
           var playerIndex = "players/player"+this.index;
           database.ref(playerIndex).set({
             name:this.name,
+            answer:this.answer
           });
         }
       //takes the player info
         static getPlayerInfo(){
           var playerInfo = database.ref("contestants");
           playerInfo.on("value",(data)=>{
-            allContestents = data.val();
+            allPlayers = data.val();
           });
         }
       }

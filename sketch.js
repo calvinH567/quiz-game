@@ -1,5 +1,7 @@
 var canva;
-var gameState, contestantCount, database, quiz, question, contestant,contestentCountref,gameStateRef
+var player
+var allPlayers;
+var gameState = 0, contestantCount, database, quiz, question, contestant,contestentCountref,gameStateRef
 function setup(){
   database = firebase.database();
   canvas = createCanvas(850,400);
@@ -11,5 +13,10 @@ function setup(){
 function draw(){
   background("pink");
   quiz.start();
-
+  if(contestantCount>2){
+    quiz.update(1)
+  }
+  if(gameState==1){
+    quiz.play();
+  }
 }
